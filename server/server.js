@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const authRouter = require('./routes/auth/AuthRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 mongoose
   .connect("mongodb+srv://hakheem67:Hakheem%40Hector@east-side.vxhfe.mongodb.net/east-side")

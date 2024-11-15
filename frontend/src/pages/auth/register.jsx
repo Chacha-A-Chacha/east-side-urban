@@ -32,18 +32,16 @@ const Register = () => {
       const data = await dispatch(registerUser(formData));
 
       if (data?.payload?.message === "Registration successful") {
-        setFormData(initialState);
         toast.success("Registration successful!");
-        navigate("/auth/login"); // Redirect to login page after successful registration
+      } else if (data?.payload?.message === "User already exists") {
+        toast.error("User already exists");
       }
 
-      if (data?.payload?.message === "User already exists") {
-        setFormData(initialState);
-        toast.error("User already exists");
-        navigate("/auth/login"); // Redirect to login page if user already exists
-      }
+      setFormData(initialState);
+      navigate("/auth/login"); // Redirect to login page after handling response
     } catch (error) {
       toast.error("An error occurred. Please try again.");
+      console.error("Registration error:", error); // Log the error for debugging
     }
   };
 
